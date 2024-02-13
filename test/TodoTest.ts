@@ -31,6 +31,19 @@ describe("Testing Todos", function () {
       expect(await todo.getTodoLen()).to.equal(1);
     });
 
+    
+
+    // it("Should fail if the unlockTime is not in the future", async function () {
+    //   // We don't use the fixture here because we want a different deployment
+    //   const latestTime = await time.latest();
+    //   const Lock = await ethers.getContractFactory("Lock");
+    //   await expect(Lock.deploy(latestTime, { value: 1 })).to.be.revertedWith(
+    //     "Unlock time should be in the future"
+    //   );
+    // });
+  });
+
+  describe("Reverted transaction instance", function () {
     it("Update title should fail on wrong index input", async function () {
       const { todo } = await loadFixture(deployTodo);
       const tx = todo.updateTodoTitle("Working", 3);
@@ -48,17 +61,7 @@ describe("Testing Todos", function () {
       const tx = todo.updateTodoStatus(3);
       await expect(tx).to.be.revertedWith('You entered an incorrect value');
     });
-
-    // it("Should fail if the unlockTime is not in the future", async function () {
-    //   // We don't use the fixture here because we want a different deployment
-    //   const latestTime = await time.latest();
-    //   const Lock = await ethers.getContractFactory("Lock");
-    //   await expect(Lock.deploy(latestTime, { value: 1 })).to.be.revertedWith(
-    //     "Unlock time should be in the future"
-    //   );
-    // });
-  });
-
+  })
   // describe("Withdrawals", function () {
   //   describe("Validations", function () {
   //     it("Should revert with the right error if called too soon", async function () {

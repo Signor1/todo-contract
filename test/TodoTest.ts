@@ -33,7 +33,7 @@ describe("Testing Todos", function () {
     });
   });
 
-  describe("Checking Item Remove Instance", function () {
+  describe("Checking for Item Removal ", function () {
     it("Should check if the remove todo item is correct", async function () {
       const { todo } = await loadFixture(deployTodo);
 
@@ -44,7 +44,7 @@ describe("Testing Todos", function () {
     });
   });
 
-  describe("Checking retrieved todo instance", function () {
+  describe("Checking for retrieved todos", function () {
     it("Should check if the returned todo is correct ", async function () {
       const { todo } = await loadFixture(deployTodo);
 
@@ -84,7 +84,7 @@ describe("Testing Todos", function () {
     });
   });
 
-  describe("Update Title & Description Instance", function () {
+  describe("Checking the Update Title and Description", function () {
     it("Should check if the update title was updated", async function () {
       const { todo } = await loadFixture(deployTodo);
 
@@ -139,7 +139,7 @@ describe("Testing Todos", function () {
     });
   });
 
-  describe("Reverted transaction instance", function () {
+  describe("Checking for revert cases in the transaction", function () {
     it("Update title should fail on wrong index input", async function () {
       const { todo } = await loadFixture(deployTodo);
       const tx = todo.updateTodoTitle("Working", 3);

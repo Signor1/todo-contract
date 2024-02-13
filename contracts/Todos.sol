@@ -12,9 +12,9 @@ contract Todos {
 
      //array
     MyTodoList[] todoLists;
-    
+
     //event to track updates on todos
-    event checkIfUpdated(MyTodoList index, String title);
+    event checkIfUpdated(MyTodoList index, string title);
 
     //CRUD
 

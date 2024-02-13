@@ -31,15 +31,23 @@ describe("Testing Todos", function () {
       expect(await todo.getTodoLen()).to.equal(1);
     });
 
-    // it("Should receive and store the funds to lock", async function () {
-    //   const { lock, lockedAmount } = await loadFixture(
-    //     deployOneYearLockFixture
-    //   );
+    it("Update title should fail on wrong index input", async function () {
+      const { todo } = await loadFixture(deployTodo);
+      const tx = todo.updateTodoTitle("Working", 3);
+      await expect(tx).to.be.revertedWith('You entered an incorrect value');
+    });
 
-    //   expect(await ethers.provider.getBalance(lock.target)).to.equal(
-    //     lockedAmount
-    //   );
-    // });
+    it("Update description should fail on wrong index input", async function () {
+      const { todo } = await loadFixture(deployTodo);
+      const tx = todo.updateTodoDesc("I will work today", 3);
+      await expect(tx).to.be.revertedWith('You entered an incorrect value');
+    });
+
+    it("Update status should fail on wrong index input", async function () {
+      const { todo } = await loadFixture(deployTodo);
+      const tx = todo.updateTodoStatus(3);
+      await expect(tx).to.be.revertedWith('You entered an incorrect value');
+    });
 
     // it("Should fail if the unlockTime is not in the future", async function () {
     //   // We don't use the fixture here because we want a different deployment
@@ -87,19 +95,19 @@ describe("Testing Todos", function () {
   //     });
   //   });
 
-  //   describe("Events", function () {
-  //     it("Should emit an event on withdrawals", async function () {
-  //       const { lock, unlockTime, lockedAmount } = await loadFixture(
-  //         deployOneYearLockFixture
-  //       );
+    // describe("Events", function () {
+    //   it("Should emit an event on withdrawals", async function () {
+    //     const { lock, unlockTime, lockedAmount } = await loadFixture(
+    //       deployOneYearLockFixture
+    //     );
 
-  //       await time.increaseTo(unlockTime);
+    //     await time.increaseTo(unlockTime);
 
-  //       await expect(lock.withdraw())
-  //         .to.emit(lock, "Withdrawal")
-  //         .withArgs(lockedAmount, anyValue); // We accept any value as `when` arg
-  //     });
-  //   });
+    //     await expect(lock.withdraw())
+    //       .to.emit(lock, "Withdrawal")
+    //       .withArgs(lockedAmount, anyValue); // We accept any value as `when` arg
+    //   });
+    // });
 
   //   describe("Transfers", function () {
   //     it("Should transfer the funds to the owner", async function () {

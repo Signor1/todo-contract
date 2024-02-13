@@ -48,12 +48,7 @@ contract Todos {
     //toggle todo item's status
     function updateTodoStatus(uint256 _index) external {
         require(_index <= todoLists.length, "You entered an incorrect value");
-
-        if (todoLists[_index].isDone) {
-            todoLists[_index].isDone = false;
-        } else {
-            todoLists[_index].isDone = true;
-        }
+        todoLists[_index].isDone = !todoLists[_index].isDone;
     }
 
      //reading a todoitem by index

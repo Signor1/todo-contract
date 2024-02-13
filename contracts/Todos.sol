@@ -9,5 +9,10 @@ contract Todos {
         string description;
         bool isDone;
     }
-    
+
+     //array
+    MyTodoList[] todoLists;
+
+    //CRUD
+
 }

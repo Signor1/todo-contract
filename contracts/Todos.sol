@@ -68,6 +68,7 @@ contract Todos {
     //remove
     function removeTodoItem(uint256 _index) external {
         require(_index < todoLists.length, "You entered an incorrect value");
-        delete todoLists[_index];
+        todoLists[_index] = todoLists[todoLists.length - 1];
+        todoLists.pop();
     }
 }

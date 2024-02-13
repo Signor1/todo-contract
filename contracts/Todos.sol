@@ -65,6 +65,11 @@ contract Todos {
         return todoLists;
     }
 
+    //method for getting the length
+    function getTodoLen() external view returns (uint){
+        return todoLists.length;
+    }
+
     //remove
     function removeTodoItem(uint256 _index) external {
         require(_index < todoLists.length, "You entered an incorrect value");

@@ -52,4 +52,11 @@ contract Todos {
             todoLists[_index].isDone = true;
         }
     }
+
+     //reading a todoitem by index
+    function getTodoItem(uint256 _index) external view returns (MyTodoList memory) {
+        require(_index <= todoLists.length, "You entered an incorrect value");
+
+        return todoLists[_index];
+    }
 }

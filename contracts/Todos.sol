@@ -64,4 +64,10 @@ contract Todos {
     function getTodos() external view returns (MyTodoList[] memory) {
         return todoLists;
     }
+
+    //remove
+    function removeTodoItem(uint256 _index) external {
+        require(_index < todoLists.length, "You entered an incorrect value");
+        delete todoLists[_index];
+    }
 }

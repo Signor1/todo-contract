@@ -59,4 +59,9 @@ contract Todos {
 
         return todoLists[_index];
     }
+
+    //reading the todos
+    function getTodos() external view returns (MyTodoList[] memory) {
+        return todoLists;
+    }
 }

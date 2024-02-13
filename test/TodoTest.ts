@@ -62,6 +62,12 @@ describe("Testing Todos", function () {
       const tx = todo.updateTodoStatus(3);
       await expect(tx).to.be.revertedWith('You entered an incorrect value');
     });
+
+    it("Remove todo item by index should fail on wrong index input", async function () {
+      const { todo } = await loadFixture(deployTodo);
+      const tx = todo.removeTodoItem(4);
+      await expect(tx).to.be.revertedWith('You entered an incorrect value');
+    });
   })
   // describe("Withdrawals", function () {
   //   describe("Validations", function () {

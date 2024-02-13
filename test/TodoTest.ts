@@ -16,8 +16,7 @@ describe("Testing Todos", function () {
     return { todo, Todo };
   }
 
-  //constants for testing
-  const title = "Read", desc = "I want to read in the evening";
+  
 
   describe("Deployment", function () {
     it("Should check if contract exist", async function () {
@@ -27,6 +26,8 @@ describe("Testing Todos", function () {
 
     it("Should check if a new todo is created", async function () {
       const { todo } = await loadFixture(deployTodo);
+      //constants for testing
+      const title = "Read", desc = "I want to read in the evening";
       const tx = await todo.addTodoItem(title, desc);
       expect(await todo.getTodoLen()).to.equal(1);
     });

@@ -28,7 +28,7 @@ describe("Testing Todos", function () {
     it("Should check if a new todo is created", async function () {
       const { todo } = await loadFixture(deployTodo);
       const tx = await todo.addTodoItem(title, desc);
-      expect(await lock.owner()).to.equal(owner.address);
+      expect(await todo.getTodoLen()).to.equal(1);
     });
 
     // it("Should receive and store the funds to lock", async function () {

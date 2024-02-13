@@ -29,8 +29,16 @@ contract Todos {
     //Update title
     function updateTodoTitle(string memory _title, uint256 _index) external {
         require(_index <= todoLists.length, "You entered an incorrect value");
-        
+
         MyTodoList storage mylistOfTodo = todoLists[_index];
         mylistOfTodo.title = _title;
+    }
+
+    //Update Description
+    function updateTodoDesc(string memory _description, uint256 _index) external {
+        require(_index <= todoLists.length, "You entered an incorrect value");
+
+        MyTodoList storage mylistOfTodo = todoLists[_index];
+        mylistOfTodo.description = _description;
     }
 }

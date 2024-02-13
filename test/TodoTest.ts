@@ -19,7 +19,7 @@ describe("Testing Todos", function () {
   
 
   describe("Deployment", function () {
-    it("Should check if contract exist", async function () {
+    it("Should check if contract was deployed", async function () {
       const { todo } = await loadFixture(deployTodo);
       expect(todo).to.exist;
     });
@@ -27,11 +27,22 @@ describe("Testing Todos", function () {
     it("Should check if a new todo is created", async function () {
       const { todo } = await loadFixture(deployTodo);
       //constants for testing
-      const title = "Read", desc = "I want to read in the evening";
+      const title = "Read", desc = "I want to read in the evening", title2 = "Cooking", desc2 = "Will be cooking today";
       const tx = await todo.addTodoItem(title, desc);
-      expect(await todo.getTodoLen()).to.equal(1);
+      const tx2 = await todo.addTodoItem(title2, desc2);
+      expect(await todo.getTodoLen()).to.equal(2);
     });
 
+    it("Should check if the remove todo item is correct", async function () {
+      const { todo } = await loadFixture(deployTodo);
+
+      const title = "Read", desc = "I want to read in the evening",
+        title2 = "Cooking", desc2 = "Will be cooking today";
+      const tx = await todo.addTodoItem(title, desc);
+      const tx2 = await todo.addTodoItem(title2, desc2);
+      const del = await todo.removeTodoItem(0);
+      expect(await todo.getTodoLen()).to.equal(1);
+    });
     
 
     // it("Should fail if the unlockTime is not in the future", async function () {

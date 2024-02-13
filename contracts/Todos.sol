@@ -15,4 +15,15 @@ contract Todos {
 
     //CRUD
 
+    //create method
+    function addTodoItem(string memory _title, string memory _description) external {
+        todoLists.push(
+            MyTodoList({
+                title: _title,
+                description: _description,
+                isDone: false
+            })
+        );
+    }
+
 }
